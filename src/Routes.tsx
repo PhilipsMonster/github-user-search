@@ -1,14 +1,20 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from './core/components/Navbar';
+import Search from './pages/Github/components/Search';
 import Home from './pages/Home/indext';
 
 const Routes = () => (
     <BrowserRouter>
-    <Navbar />
-        <Route path="/">
-            <Home />
-        </Route>
+        <Navbar />
+        <Switch>
+            <Route path="/" exact>
+                <Home />
+            </Route>
+            <Route path="/search">
+                <Search />
+            </Route>
+        </Switch>
     </BrowserRouter>
 );
 

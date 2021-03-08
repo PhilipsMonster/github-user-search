@@ -3,7 +3,7 @@ import './styles.scss';
 
 const Search = () => {
     return (
-        <h1>Teste</h1>
+        <h1>Tela de pesquisa</h1>
     );
 }
 
