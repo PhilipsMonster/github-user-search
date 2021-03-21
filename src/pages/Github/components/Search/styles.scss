@@ -8,6 +8,7 @@
     padding-top: 60px;
     padding-bottom: 50px;
     padding-left: 100px;
+    background: #e6f7ff;
 }
 
 .text-title {
@@ -20,9 +21,9 @@
 }
 
 .user-search {
-    width:55%;
+    width: 55%;
     height: 50px;
-    margin-bottom: 30px; 
+    margin-bottom: 30px;
     margin-right: auto;
     padding-left: 18px;
     background: #ffffff;
@@ -31,8 +32,117 @@
     border-radius: 4px;
     font-size: 18px;
     line-height: 1px;
-    font-weight:lighter;
+    font-weight: lighter;
+    align-items: center;
+    color: #c6c6c6;
+}
+
+.user-container {
+    margin-top: 55px;
+    padding-left: 90px;
+    padding-right: 100px;
+    padding-bottom: 75px;
+}
+
+.user-content {
+    background: #f5f5f5;
+    border-radius: 8px;
+}
+
+.row-1 {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.row-2 {
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-bottom: 30px;
+}
+
+.col-1 {
+    width: 284px;
+    height: 280px;
+    margin-top: 25px;
+    margin-left: 30px;
     display: flex;
     align-items: center;
-    color: #c6c6c6
+    text-align: center;
+    background: #dedede;
+    border-radius: 8px;
+}
+
+.col-2 {
+    width: 100%;
+    height: 280px;
+    margin-top: 25px;
+    margin-left: 55px;
+    margin-right: 20px;
+    background: #f5f5f5;
+    border-radius: 10px;
+}
+
+.public-generic-repo {
+    margin-bottom: 12px;
+    margin-right: 8px;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    color: #595959;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.public-repo {
+    width: 160px;
+}
+
+.public-followers {
+    width: 120px;
+}
+
+.public-following {
+    width: 110px;
+}
+
+.public-repo-detail {
+    height: 40px;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-size: 16px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    color: #737373;
+}
+
+.form-information {
+    height: 245px;
+    padding-top: 1px;
+    padding-left: 14px;
+    padding-right: 17px;
+    background: #ffffff;
+    border: 1px solid #d9d9d9;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.information-txt {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #1890ff;
 }

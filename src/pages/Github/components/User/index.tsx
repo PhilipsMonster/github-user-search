@@ -3,7 +3,7 @@ import './styles.scss';
 
 const User = () => {
     return (
-        <h1>Teste</h1>
+        <h1>User</h1>
     );
 }
 
