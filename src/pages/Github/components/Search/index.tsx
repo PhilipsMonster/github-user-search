@@ -1,28 +1,32 @@
 import React, { useState } from 'react';
 import Button from '../../../../core/components/Button';
-import { ReactComponent as Profile } from '../../../../core/assets/images/img-profile.svg'
 import './styles.scss';
 import { makeRequest } from '../../../../core/utils/request';
 
 type FormState = {
-    repository: string;
+    userSearch: string;
+    public_repos: string;
     followers: string;
     following: string;
     company: string;
-    website: string;
-    city: string;
-    member: string;
+    blog: string;
+    location: string;
+    created_at: string;
+    avatar_url: string;
 }
 
 const Search = () => {
+
     const [formData, setFormData] = useState<FormState>({
-        repository: '',
+        userSearch: '',
+        public_repos: '',
         followers: '',
         following: '',
         company: '',
-        website: '',
-        city: '',
-        member: ''
+        blog: '',
+        location: '',
+        created_at: '',
+        avatar_url: ''
     });
 
     const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -37,10 +41,8 @@ const Search = () => {
         const payload = {
             ...formData
         }
-        makeRequest({ url: '/philipsmonster', method: 'GET', data: payload })
-        .then((res) => {
-            console.log(res);            
-        });
+        makeRequest({ url: payload.userSearch, method: 'GET', data: payload })
+            .then((response) => setFormData(response.data));
     }
 
     return (
@@ -48,12 +50,13 @@ const Search = () => {
             <>
                 <div className="search-container">
                     <div className="search-content card-base1">
-                        <h1 className="text-title">
-                            Encontre um perfil Github
-                </h1>
+                        <h1 className="text-title">Encontre um perfil Github</h1>
                         <input
+                            name="userSearch"
+                            value={formData.userSearch}
                             type="text"
                             className="user-search"
+                            onChange={handleOnChange}
                             placeholder="Usuário Github"
                         />
                         <Button text="Encontrar" />
@@ -63,61 +66,78 @@ const Search = () => {
                     <div className="user-content card-base2">
                         <div className="row-1">
                             <div className="col-1">
-                                <Profile />
+                                <img src={formData.avatar_url} alt={formData.userSearch} className="user-image"/>
                             </div>
                             <div className="col-2">
-                                <input
-                                    name="repository"
-                                    value={formData.repository}
-                                    type="text"
-                                    className="public-repo card-base2 public-generic-repo"
-                                    onChange={handleOnChange}
-                                    placeholder="Repositórios públicos: "
-                                />
-                                <input
-                                    name="followers"
-                                    value={formData.followers}
-                                    type="text"
-                                    className="public-followers card-base2 public-generic-repo"
-                                    placeholder="Seguidores: "
-                                />
-                                <input
-                                    name="following"
-                                    value={formData.following}
-                                    type="text"
-                                    className="public-following card-base2 public-generic-repo"
-                                    placeholder="Seguindo: "
-                                />
+                                <div className="public-generic-repo">
+                                    <div className="public-generic-repo2">
+                                        <label htmlFor="public_repos" className="label-repo">Repositórios públicos: </label>
+                                        <input
+                                            name="public_repos"
+                                            value={formData.public_repos}
+                                            type="text"
+                                            onChange={handleOnChange}
+                                            className="public-repo"
+                                        />
+                                    </div>
+                                    <div className="public-generic-repo2">
+                                        <label htmlFor="followers" className="label-followers">Seguidores: </label>
+                                        <input
+                                            name="followers"
+                                            value={formData.followers}
+                                            type="text"
+                                            className="public-repo"
+                                        />
+                                    </div>
+                                    <div className="public-generic-repo2">
+                                        <label htmlFor="following" className="label-following">Seguindo: </label>
+                                        <input
+                                            name="following"
+                                            value={formData.following}
+                                            type="text"
+                                            className="public-repo"
+                                        />
+                                    </div>
+                                </div>
+
                                 <div className="form-information card-base2">
                                     <h1 className="information-txt">Informações</h1>
-                                    <input
-                                        name="company"
-                                        value={formData.company}
-                                        type="text"
-                                        className="public-repo-detail"
-                                        placeholder="Empresa: "
-                                    />
-                                    <input
-                                        name="website"
-                                        value={formData.website}
-                                        type="text"
-                                        className="public-repo-detail"
-                                        placeholder="Website/Blog: "
-                                    />
-                                    <input
-                                        name="city"
-                                        value={formData.city}
-                                        type="text"
-                                        className="public-repo-detail"
-                                        placeholder="Localidade: "
-                                    />
-                                    <input
-                                        name="member"
-                                        value={formData.member}
-                                        type="text"
-                                        className="public-repo-detail"
-                                        placeholder="Membro desde: "
-                                    />
+                                    <div className="public-repo-detail">
+                                        <label htmlFor="company"><b>Empresa: </b></label>
+                                        <input
+                                            name="company"
+                                            value={formData.company}
+                                            type="text"
+                                            className="input_txt"
+                                        />
+                                    </div>
+                                    <div className="public-repo-detail">
+                                        <label htmlFor="blog"><b>Website/Blog: </b></label>
+                                        <input
+                                            name="blog"
+                                            value={formData.blog}
+                                            type="text"
+                                            className="input_txt"
+                                        />
+                                    </div>
+                                    <div className="public-repo-detail">
+                                        <label htmlFor="location"><b>Localidade: </b></label>
+                                        <input
+                                            name="location"
+                                            value={formData.location}
+                                            type="text"
+                                            className="input_txt"
+                                        />
+                                    </div>
+                                    <div className="public-repo-detail">
+                                        <label htmlFor="created_at"><b>Membro desde: </b></label>
+                                        <input
+                                            name="created_at"
+                                            value={formData.created_at}
+                                            type="text"
+                                            className="input_txt"
+                                        />
+                                    </div>
                                 </div>
                             </div>
                         </div>
