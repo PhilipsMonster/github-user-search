@@ -18,6 +18,8 @@ type FormState = {
 
 const Search = () => {
 
+    const [user, setUser] = useState('');
+
     const [formData, setFormData] = useState<FormState>({
         user: '',
         public_repos: '',
@@ -31,11 +33,9 @@ const Search = () => {
         html_url: ''
     });    
 
-    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        const name = event.target.name;
-        const value = event.target.value;
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
-        setFormData(data => ({ ...data, [name]: value }))
+        setUser(event.target.value);
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -43,8 +43,9 @@ const Search = () => {
         const payload = {
             ...formData
         }
-        makeRequest({ url: formData.user, method: 'GET', data: payload })
-            .then((response) => setFormData(response.data));
+        makeRequest({ url: user, method: 'GET', data: payload })
+            .then(response => setFormData(response.data))
+            .finally(() => setUser(''));                          
     }
 
     return (
@@ -55,10 +56,10 @@ const Search = () => {
                         <h1 className="text-title">Encontre um perfil Github</h1>
                         <input
                             name="user"
-                            value={formData.user}
+                            value={user}
                             type="text"
                             className="user-search"
-                            onChange={handleOnChange}
+                            onChange={handleChange}
                             placeholder="Usuário Github"
                         />
                         <Button text="Encontrar" />
