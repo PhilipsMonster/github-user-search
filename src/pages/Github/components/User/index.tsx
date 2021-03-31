@@ -17,7 +17,16 @@ const User = ({ userResponse, loading }: Props) => {
             <div className="row-1">
                 <div className="col-1">
                     {loading ? <ImageLoader /> : (
-                        <img src={userResponse.avatar_url} alt={userResponse.location} className="user-image" />
+                        <>
+                            <div>
+                                <img src={userResponse.avatar_url} alt={userResponse.location} className="user-image" />
+                            </div>
+                            <div className="btn-container-profile">
+                                <a href={userResponse?.html_url} target="_blank" rel="noreferrer" className="btn-content-profile">
+                                    <Button text="Ver perfil" />
+                                </a>
+                            </div>
+                        </>
                     )}
                 </div>
                 <div className="col-2">
@@ -94,11 +103,6 @@ const User = ({ userResponse, loading }: Props) => {
                         </>
                     )}
                 </div>
-            </div>
-            <div className="row-2">
-                <a href={userResponse?.html_url} target="_blank" rel="noreferrer" className="btn-txt">
-                    <Button text="Ver perfil" />
-                </a>
             </div>
         </>
     );
