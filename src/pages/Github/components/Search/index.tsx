@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Button from '../../../../core/components/Button';
-import { UserResponse } from '../../../../core/types/User';
+import {    UserResponse } from '../../../../core/types/User';
 import { makeRequest } from '../../../../core/utils/request';
 import User from '../User';
 import './styles.scss';
@@ -9,7 +9,8 @@ const Search = () => {
 
     const [userSearch, setUserSearch] = useState('');
     const [userSearching, setUserSearching] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+
+    const [isLoading, setIsLoading] = useState<boolean>(false);
 
     const [formData, setFormData] = useState<UserResponse>({
         user: '',
@@ -26,7 +27,7 @@ const Search = () => {
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 
-        setUserSearch(event.target.value);        
+        setUserSearch(event.target.value);
     }
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -35,9 +36,13 @@ const Search = () => {
             ...formData
         }
         setUserSearching(true);
+        setIsLoading(true);
         makeRequest({ url: userSearch, method: 'GET', data: payload })
             .then(response => setFormData(response.data))
-            .finally(() => setUserSearch(''));
+            .finally(() => {
+                setUserSearch('');
+                setIsLoading(false);
+            });
     }
 
     return (
@@ -61,7 +66,7 @@ const Search = () => {
             <div className="user-container">
                 {userSearching ?
                     <div className="user-content card-base2">
-                        <User userResponse={formData} />
+                        <User userResponse={formData} loading={isLoading} />
                     </div>
                     : <div></div>
                 }

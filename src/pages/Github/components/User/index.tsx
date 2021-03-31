@@ -2,87 +2,97 @@ import React from 'react';
 import { UserResponse } from '../../../../core/types/User';
 import Button from '../../../../core/components/Button';
 import './styles.scss';
+import ImageLoader from '../Loaders/ImageLoader';
+import InfoLoader from '../Loaders/InfoLoader';
 
 type Props = {
     userResponse: UserResponse;
+    loading: boolean;
 }
 
-const User = ({ userResponse }: Props) => {
+const User = ({ userResponse, loading }: Props) => {
+
     return (
         <>
             <div className="row-1">
                 <div className="col-1">
-                    <img src={userResponse.avatar_url} alt={userResponse.location} className="user-image" />
+                    {loading ? <ImageLoader /> : (
+                        <img src={userResponse.avatar_url} alt={userResponse.location} className="user-image" />
+                    )}
                 </div>
                 <div className="col-2">
-                    <div className="public-generic-repo">
-                        <div className="public-generic-repo2">
-                            <label htmlFor="public_repos" className="label-repo">Repositórios públicos: </label>
-                            <input
-                                name="public_repos"
-                                value={userResponse.public_repos}
-                                type="text"
-                                className="public-repo"
-                            />
-                        </div>
-                        <div className="public-generic-repo2">
-                            <label htmlFor="followers" className="label-followers">Seguidores: </label>
-                            <input
-                                name="followers"
-                                value={userResponse.followers}
-                                type="text"
-                                className="public-repo"
-                            />
-                        </div>
-                        <div className="public-generic-repo2">
-                            <label htmlFor="following" className="label-following">Seguindo: </label>
-                            <input
-                                name="following"
-                                value={userResponse.following}
-                                type="text"
-                                className="public-repo"
-                            />
-                        </div>
-                    </div>
-                    <div className="form-information card-base2">
-                        <h1 className="information-txt">Informações</h1>
-                        <div className="public-repo-detail">
-                            <label htmlFor="company"><b>Empresa: </b></label>
-                            <input
-                                name="company"
-                                value={userResponse.company}
-                                type="text"
-                                className="input_txt"
-                            />
-                        </div>
-                        <div className="public-repo-detail">
-                            <label htmlFor="blog"><b>Website/Blog: </b></label>
-                            <input
-                                name="blog"
-                                value={userResponse.blog}
-                                type="text"
-                                className="input_txt"
-                            />
-                        </div>
-                        <div className="public-repo-detail">
-                            <label htmlFor="location"><b>Localidade: </b></label>
-                            <input
-                                name="location"
-                                value={userResponse.location}
-                                type="text"
-                                className="input_txt"
-                            />
-                        </div>
-                        <div className="public-repo-detail">
-                            <label htmlFor="created_at"><b>Membro desde: </b></label>
-                            <input
-                                name="created_at"
-                                value={userResponse.created_at}
-                                type="text"
-                                className="input_txt"
-                            />
-                        </div>
-                    </div>
+                    {loading ? <InfoLoader /> : (
+                        <>
+                            <div className="public-generic-repo">
+                                <div className="public-generic-repo2">
+                                    <label htmlFor="public_repos" className="label-repo">Repositórios públicos: </label>
+                                    <input
+                                        name="public_repos"
+                                        value={userResponse.public_repos}
+                                        type="text"
+                                        className="public-repo"
+                                    />
+                                </div>
+                                <div className="public-generic-repo2">
+                                    <label htmlFor="followers" className="label-followers">Seguidores: </label>
+                                    <input
+                                        name="followers"
+                                        value={userResponse.followers}
+                                        type="text"
+                                        className="public-repo"
+                                    />
+                                </div>
+                                <div className="public-generic-repo2">
+                                    <label htmlFor="following" className="label-following">Seguindo: </label>
+                                    <input
+                                        name="following"
+                                        value={userResponse.following}
+                                        type="text"
+                                        className="public-repo"
+                                    />
+                                </div>
+                            </div>
+                            <div className="form-information card-base2">
+                                <h1 className="information-txt">Informações</h1>
+                                <div className="public-repo-detail">
+                                    <label htmlFor="company"><b>Empresa: </b></label>
+                                    <input
+                                        name="company"
+                                        value={userResponse.company}
+                                        type="text"
+                                        className="input_txt"
+                                    />
+                                </div>
+                                <div className="public-repo-detail">
+                                    <label htmlFor="blog"><b>Website/Blog: </b></label>
+                                    <input
+                                        name="blog"
+                                        value={userResponse.blog}
+                                        type="text"
+                                        className="input_txt"
+                                    />
+                                </div>
+                                <div className="public-repo-detail">
+                                    <label htmlFor="location"><b>Localidade: </b></label>
+                                    <input
+                                        name="location"
+                                        value={userResponse.location}
+                                        type="text"
+                                        className="input_txt"
+                                    />
+                                </div>
+                                <div className="public-repo-detail">
+                                    <label htmlFor="created_at"><b>Membro desde: </b></label>
+                                    <input
+                                        name="created_at"
+                                        value={userResponse.created_at}
+                                        type="text"
+                                        className="input_txt"
+                                    />
+                                </div>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
             <div className="row-2">
