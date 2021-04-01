@@ -4,10 +4,18 @@ import Button from '../../../../core/components/Button';
 import './styles.scss';
 import ImageLoader from '../Loaders/ImageLoader';
 import InfoLoader from '../Loaders/InfoLoader';
+import dayjs from 'dayjs';
+import 'dayjs/locale/pt-br';
 
 type Props = {
     userResponse: UserResponse;
     loading: boolean;
+}
+
+dayjs.locale('pt-br');
+
+const dateFromNow = (date: string) => {
+    return dayjs(date).format('DD/MM/YYYY');;
 }
 
 const User = ({ userResponse, loading }: Props) => {
@@ -94,7 +102,7 @@ const User = ({ userResponse, loading }: Props) => {
                                     <label htmlFor="created_at"><b>Membro desde: </b></label>
                                     <input
                                         name="created_at"
-                                        value={userResponse.created_at}
+                                        value={dateFromNow(userResponse.created_at)}
                                         type="text"
                                         className="input_txt"
                                     />
