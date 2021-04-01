@@ -45,7 +45,7 @@ const User = ({ userResponse, loading }: Props) => {
                                     <label htmlFor="public_repos" className="label-repo">Repositórios públicos: </label>
                                     <input
                                         name="public_repos"
-                                        value={userResponse.public_repos}
+                                        defaultValue={userResponse.public_repos}
                                         type="text"
                                         className="public-repo"
                                     />
@@ -54,7 +54,7 @@ const User = ({ userResponse, loading }: Props) => {
                                     <label htmlFor="followers" className="label-followers">Seguidores: </label>
                                     <input
                                         name="followers"
-                                        value={userResponse.followers}
+                                        defaultValue={userResponse.followers}
                                         type="text"
                                         className="public-repo"
                                     />
@@ -63,7 +63,7 @@ const User = ({ userResponse, loading }: Props) => {
                                     <label htmlFor="following" className="label-following">Seguindo: </label>
                                     <input
                                         name="following"
-                                        value={userResponse.following}
+                                        defaultValue={userResponse.following}
                                         type="text"
                                         className="public-repo"
                                     />
@@ -75,7 +75,7 @@ const User = ({ userResponse, loading }: Props) => {
                                     <label htmlFor="company"><b>Empresa: </b></label>
                                     <input
                                         name="company"
-                                        value={userResponse.company}
+                                        defaultValue={userResponse.company}
                                         type="text"
                                         className="input_txt"
                                     />
@@ -84,7 +84,7 @@ const User = ({ userResponse, loading }: Props) => {
                                     <label htmlFor="blog"><b>Website/Blog: </b></label>
                                     <input
                                         name="blog"
-                                        value={userResponse.blog}
+                                        defaultValue={userResponse.blog}
                                         type="text"
                                         className="input_txt"
                                     />
@@ -93,7 +93,7 @@ const User = ({ userResponse, loading }: Props) => {
                                     <label htmlFor="location"><b>Localidade: </b></label>
                                     <input
                                         name="location"
-                                        value={userResponse.location}
+                                        defaultValue={userResponse.location}
                                         type="text"
                                         className="input_txt"
                                     />
@@ -102,7 +102,7 @@ const User = ({ userResponse, loading }: Props) => {
                                     <label htmlFor="created_at"><b>Membro desde: </b></label>
                                     <input
                                         name="created_at"
-                                        value={dateFromNow(userResponse.created_at)}
+                                        defaultValue={dateFromNow(userResponse.created_at)}
                                         type="text"
                                         className="input_txt"
                                     />
